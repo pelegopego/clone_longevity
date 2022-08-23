@@ -1,0 +1,6 @@
+{
+  "appTitle": "app_tarkov",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}
