@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'item.dart';
 import 'itemDetail.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 
-/// Displays a list of Items.
 class ItemListView extends StatelessWidget {
   const ItemListView({
     Key? key,
@@ -14,32 +14,69 @@ class ItemListView extends StatelessWidget {
   static const routeName = '/';
 
   final List<Item> items;
+  final String _query = """
+    query {
+      itemsByName(name: "colt") {
+        name
+        types
+        avg24hPrice
+        basePrice
+        width
+        height
+        changeLast48hPercent
+        iconLink
+        link
+        sellFor {
+          price
+          source
+        }
+      }
+    }
+  """;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Tarkov Items'),
-      ),
-      body: ListView.builder(
-        restorationId: 'ItemListView',
-        itemCount: items.length,
-        itemBuilder: (BuildContext context, int index) {
-          final item = items[index];
+        appBar: AppBar(
+          title: const Text('Tarkov Items'),
+        ),
+        body: Query(
+            options: QueryOptions(
+              document: gql(_query),
+            ),
+            builder: (QueryResult result,
+                {VoidCallback? refetch, FetchMore? fetchMore}) {
+              if (result.hasException) {
+                return Text(result.exception.toString());
+              }
 
-          return ListTile(
-              title: Text('Item ${item.id}'),
-              leading: const CircleAvatar(
-                foregroundImage: AssetImage('assets/images/flutter_logo.png'),
-              ),
-              onTap: () {
-                Navigator.restorablePushNamed(
-                  context,
-                  ItemDetailsView.routeName,
-                );
-              });
-        },
-      ),
-    );
+              if (result.isLoading) {
+                return const Text('Loadings');
+              }
+              List? items = result.data?['itemsByName'];
+
+              if (items == null) {
+                return const Text('No items found');
+              }
+
+              return ListView.builder(
+                itemCount: items.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final item = items[index];
+                  return ListTile(
+                      title: Text(item['name']),
+                      leading: CircleAvatar(
+                        foregroundImage: NetworkImage(item['iconLink']),
+                        foregroundColor: Colors.white,
+                      ),
+                      onTap: () {
+                        Navigator.restorablePushNamed(
+                          context,
+                          ItemDetailsView.routeName,
+                        );
+                      });
+                },
+              );
+            }));
   }
 }
