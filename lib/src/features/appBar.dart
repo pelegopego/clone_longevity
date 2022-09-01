@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   const CustomAppBar({Key? key})
-      : preferredSize = const Size.fromHeight(100.0),
+      : preferredSize = const Size.fromHeight(95.0),
         super(key: key);
 
   @override
@@ -53,8 +53,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     Align(
                       alignment: Alignment.centerRight,
                       child: Row(children: [
-                        Padding(
-                            padding: const EdgeInsets.all(5),
+                        const Padding(
+                            padding: EdgeInsets.all(5),
                             child: Icon(
                               Icons.supervised_user_circle,
                               color: Colors.blue,
@@ -62,7 +62,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                             )),
                         Container(
                             margin: const EdgeInsets.only(right: 10),
-                            child: Text(
+                            child: const Text(
                               '3.5k',
                               style: TextStyle(
                                 fontSize: 12,
