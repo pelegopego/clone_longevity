@@ -1,6 +1,6 @@
 {
-    "name": "app_tarkov",
-    "short_name": "app_tarkov",
+    "name": "app_clone_longevity",
+    "short_name": "app_clone_longevity",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

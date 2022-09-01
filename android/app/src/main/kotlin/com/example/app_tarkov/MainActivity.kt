@@ -1,4 +1,4 @@
-package com.example.app_tarkov
+package com.example.app_clone_longevity
 
 import io.flutter.embedding.android.FlutterActivity
 

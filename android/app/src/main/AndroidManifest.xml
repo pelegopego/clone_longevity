@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.app_tarkov">
+    package="com.example.app_clone_longevity">
    <application
-        android:label="app_tarkov"
+        android:label="app_clone_longevity"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
