@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
@@ -17,14 +19,13 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.green[300],
+        color: Colors.white,
         child: Padding(
-          padding: EdgeInsets.only(top: 40, left: 5, right: 5),
+          padding: const EdgeInsets.only(top: 40, left: 5, right: 5),
           child: Column(
             children: [
               Container(
-                color: Colors.red,
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 child: Column(children: [
                   Row(children: [
                     const CircleAvatar(
@@ -33,37 +34,54 @@ class _CustomAppBarState extends State<CustomAppBar> {
                           'https://thumbs.dreamstime.com/z/beautiful-woman-face-close-up-studio-white-beauty-spa-model-f-female-clean-fresh-perfect-skin-closeup-youth-care-concept-73395757.jpg'),
                       foregroundColor: Colors.white,
                     ),
-                    Expanded(
+                    const Expanded(
                       child: Padding(
-                          padding: EdgeInsets.all(5),
+                          padding: EdgeInsets.only(
+                            top: 5,
+                            bottom: 5,
+                            left: 30,
+                          ),
                           child: Text(
-                            'Jenny Doe',
-                            style: TextStyle(color: Colors.black),
+                            'Jane Cooper',
+                            style: TextStyle(
+                                color: Colors.black87,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Comfortaa',
+                                fontSize: 16),
                           )),
                     ),
                     Align(
                       alignment: Alignment.centerRight,
                       child: Row(children: [
-                        Icon(
-                          Icons.supervised_user_circle,
-                          color: Colors.blue[600],
-                          size: 16,
-                        ),
-                        Text(
-                          '3.5k',
-                          style: TextStyle(
-                            color: Colors.blue[600],
-                          ),
-                        )
+                        Padding(
+                            padding: const EdgeInsets.all(5),
+                            child: Icon(
+                              Icons.supervised_user_circle,
+                              color: Colors.blue,
+                              size: 15,
+                            )),
+                        Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            child: Text(
+                              '3.5k',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Comfortaa',
+                                color: Colors.blue,
+                              ),
+                            )),
                       ]),
                     ),
                   ]),
                   Container(
+                    margin: const EdgeInsets.only(top: 5),
                     height: 4,
                     width: 100,
                     decoration: BoxDecoration(
-                        color: Colors.grey[400],
-                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                        color: Colors.grey[300],
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(20))),
                   ),
                 ]),
               ),
