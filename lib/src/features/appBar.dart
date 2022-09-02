@@ -53,22 +53,22 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     Align(
                       alignment: Alignment.centerRight,
                       child: Row(children: [
-                        const Padding(
+                        Padding(
                             padding: EdgeInsets.all(5),
                             child: Icon(
                               Icons.supervised_user_circle,
-                              color: Colors.blue,
+                              color: Colors.blue[400],
                               size: 15,
                             )),
                         Container(
                             margin: const EdgeInsets.only(right: 10),
-                            child: const Text(
+                            child: Text(
                               '3.5k',
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Comfortaa',
-                                color: Colors.blue,
+                                color: Colors.blue[400],
                               ),
                             )),
                       ]),

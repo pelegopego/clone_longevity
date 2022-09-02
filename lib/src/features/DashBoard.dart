@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'cards/DailyStep.dart';
+import 'cards/Balance.dart';
 
 class ItemListView extends StatefulWidget {
   const ItemListView({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class _ItemListViewState extends State<ItemListView> {
   Widget build(BuildContext context) {
     List cardList = [
       DailySteps(),
-      DailySteps(),
+      Balance(),
     ];
     List<T> map<T>(List list, Function handler) {
       List<T> result = [];
@@ -30,15 +31,13 @@ class _ItemListViewState extends State<ItemListView> {
         SliverToBoxAdapter(
           child: CarouselSlider(
             options: CarouselOptions(
-              height: 120.0,
-              aspectRatio: 2.0,
+              height: 105.0,
               enableInfiniteScroll: false,
             ),
             items: cardList.map((card) {
               return Builder(builder: (BuildContext context) {
                 return SizedBox(
                   height: MediaQuery.of(context).size.height * 0.30,
-                  width: MediaQuery.of(context).size.width * 0.90,
                   child: card,
                 );
               });
