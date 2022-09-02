@@ -44,8 +44,7 @@ class _DailyStepsState extends State<DailySteps> {
             borderRadius: const BorderRadius.all(Radius.circular(5))),
         child: Column(children: [
           Padding(
-              padding:
-                  const EdgeInsets.only(top: 5, bottom: 5, right: 10, left: 10),
+              padding: const EdgeInsets.only(top: 5, right: 10, left: 10),
               child: Container(
                   color: Colors.red,
                   child: Row(children: [
@@ -56,7 +55,7 @@ class _DailyStepsState extends State<DailySteps> {
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Comfortaa',
-                            fontSize: 18),
+                            fontSize: 16),
                       ),
                     ),
                     Align(
@@ -84,8 +83,7 @@ class _DailyStepsState extends State<DailySteps> {
                     ),
                   ]))),
           Padding(
-              padding: const EdgeInsets.only(
-                  top: 10, bottom: 5, right: 10, left: 10),
+              padding: const EdgeInsets.only(bottom: 5, right: 10, left: 10),
               child: Container(
                 color: Colors.green,
                 child: Row(children: [
@@ -96,10 +94,10 @@ class _DailyStepsState extends State<DailySteps> {
                     child: charts.PieChart<int>(DailySteps._createSampleData(),
                         animate: false,
                         layoutConfig: charts.LayoutConfig(
-                          leftMarginSpec: charts.MarginSpec.fixedPixel(8),
-                          topMarginSpec: charts.MarginSpec.fixedPixel(8),
-                          rightMarginSpec: charts.MarginSpec.fixedPixel(8),
-                          bottomMarginSpec: charts.MarginSpec.fixedPixel(8),
+                          leftMarginSpec: charts.MarginSpec.fixedPixel(10),
+                          topMarginSpec: charts.MarginSpec.fixedPixel(10),
+                          rightMarginSpec: charts.MarginSpec.fixedPixel(10),
+                          bottomMarginSpec: charts.MarginSpec.fixedPixel(10),
                         ),
                         defaultRenderer:
                             new charts.ArcRendererConfig(arcWidth: 5)),
@@ -111,21 +109,21 @@ class _DailyStepsState extends State<DailySteps> {
                       Container(
                           color: Colors.white,
                           width: 150,
-                          padding: const EdgeInsets.only(left: 10),
+                          padding: const EdgeInsets.only(top: 10, left: 10),
                           child: const Text(
                             'Almost there!',
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 10,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Comfortaa',
                               color: Colors.blue,
                             ),
                           )),
                       Container(
-                        height: 30,
+                        height: 35,
                         width: 150,
                         color: Colors.brown,
-                        padding: EdgeInsets.only(top: 5, left: 10),
+                        padding: EdgeInsets.only(top: 10, left: 10),
                         child: Row(children: [
                           Container(
                             alignment: Alignment.bottomLeft,
