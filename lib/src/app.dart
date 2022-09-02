@@ -9,12 +9,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          backgroundColor: Colors.grey[200],
-          appBar: const CustomAppBar(),
-          body: const ItemListView(),
+          backgroundColor: Colors.white,
+          appBar: CustomAppBar(),
+          body: ItemListView(),
         ));
   }
 }
