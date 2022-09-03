@@ -37,7 +37,7 @@ class _DailyStepsState extends State<DailySteps> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 10, right: 10),
+      padding: EdgeInsets.only(right: 5),
       child: Container(
         height: 50,
         decoration: BoxDecoration(

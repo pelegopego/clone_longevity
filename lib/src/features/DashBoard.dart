@@ -166,6 +166,12 @@ class _ItemListViewState extends State<ItemListView>
           ),
         ),
         Summary(),
+        SliverToBoxAdapter(
+          child: Divider(
+            thickness: 2.5,
+            color: Colors.blue[100],
+          ),
+        ),
         SliverFixedExtentList(
           itemExtent: 50.0,
           delegate: SliverChildBuilderDelegate(

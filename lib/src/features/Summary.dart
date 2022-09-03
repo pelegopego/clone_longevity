@@ -41,7 +41,7 @@ class _SummaryState extends State<Summary> {
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Container(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.only(top: 50, bottom: 20, left: 20, right: 20),
           child: Row(children: [
             const Expanded(
               child: Text(
