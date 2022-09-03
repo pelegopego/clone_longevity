@@ -19,7 +19,16 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.white,
+        decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.1),
+                blurRadius: 5,
+                offset: Offset(0, 2), // changes position of shadow
+              ),
+            ],
+            borderRadius: BorderRadius.circular(10), // Creates border
+            color: Colors.white),
         child: Padding(
           padding: const EdgeInsets.only(top: 40, left: 5, right: 5),
           child: Column(
@@ -79,7 +88,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     height: 4,
                     width: 100,
                     decoration: BoxDecoration(
-                        color: Colors.grey[300],
+                        color: Colors.grey[200],
                         borderRadius:
                             const BorderRadius.all(Radius.circular(20))),
                   ),

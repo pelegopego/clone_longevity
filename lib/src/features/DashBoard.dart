@@ -59,7 +59,7 @@ class _ItemListViewState extends State<ItemListView>
                 indicator: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
+                        color: Colors.grey.withOpacity(0.1),
                         blurRadius: 25,
                         offset: Offset(0, 20), // changes position of shadow
                       ),
