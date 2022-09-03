@@ -2,6 +2,14 @@
 
 import 'package:flutter/material.dart';
 
+class SummaryItem {
+  final String title;
+  final String description;
+  final Color? color;
+
+  SummaryItem(this.title, this.description, this.color);
+}
+
 class Summary extends StatefulWidget {
   const Summary({Key? key}) : super(key: key);
 
@@ -11,25 +19,101 @@ class Summary extends StatefulWidget {
 }
 
 class _SummaryState extends State<Summary> {
+  static List<SummaryItem> _createSampleData() {
+    return [
+      SummaryItem('Risk level', 'Middle', Colors.yellow[700]),
+      SummaryItem('BMI', '18.8', Colors.red[400]),
+      SummaryItem('Ideal Weight', '83.2', Colors.greenAccent[400]),
+      SummaryItem('Obesity Rate', 'Normal', Colors.yellow[700]),
+      SummaryItem('BMR', '2290', Colors.yellow[700]),
+      SummaryItem('Bio-Age', '25', Colors.black87),
+      SummaryItem('Body type', 'Mesomorph', Colors.black87),
+      SummaryItem('Subcutaneous Fat', '15%', Colors.yellow[700]),
+    ];
+  }
+
+  List<SummaryItem> summaryList = _createSampleData();
+
   @override
   Widget build(BuildContext context) {
-    return SliverGrid(
-      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 200.0,
-        mainAxisSpacing: 10.0,
-        crossAxisSpacing: 10.0,
-        childAspectRatio: 4.0,
+    return SliverToBoxAdapter(
+        child: Container(
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Container(
+          padding: EdgeInsets.all(20),
+          child: Row(children: [
+            const Expanded(
+              child: Text(
+                'My summary',
+                style: TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Comfortaa',
+                    fontSize: 22),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(right: 10),
+              alignment: Alignment.centerRight,
+              child: Row(children: [
+                Padding(
+                    padding: EdgeInsets.all(5),
+                    child: Icon(
+                      Icons.view_quilt_outlined,
+                      color: Colors.blue[400],
+                      size: 20,
+                    )),
+                Padding(
+                    padding: EdgeInsets.all(5),
+                    child: Icon(
+                      Icons.list_rounded,
+                      color: Colors.black87,
+                      size: 20,
+                    )),
+                Padding(
+                    padding: EdgeInsets.all(5),
+                    child: Icon(
+                      Icons.lens_blur_sharp,
+                      color: Colors.black87,
+                      size: 20,
+                    )),
+              ]),
+            ),
+          ])),
+      Wrap(
+        children: summaryList
+            .map((e) => Container(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          e.title,
+                          textWidthBasis: TextWidthBasis.parent,
+                          textAlign: TextAlign.justify,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Comfortaa',
+                            color: Colors.black87,
+                          ),
+                        ),
+                        Padding(
+                            padding: EdgeInsets.only(top: 5),
+                            child: Text(
+                              e.description,
+                              textWidthBasis: TextWidthBasis.parent,
+                              textAlign: TextAlign.justify,
+                              style: TextStyle(
+                                  fontSize: 22,
+                                  fontFamily: 'Comfortaa',
+                                  color: e.color),
+                            ))
+                      ]),
+                ))
+            .toList(),
       ),
-      delegate: SliverChildBuilderDelegate(
-        (BuildContext context, int index) {
-          return Container(
-            alignment: Alignment.center,
-            color: Colors.teal[100 * (index % 9)],
-            child: Text('Grid Item $index'),
-          );
-        },
-        childCount: 20,
-      ),
-    );
+    ])));
   }
 }
