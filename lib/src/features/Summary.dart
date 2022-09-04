@@ -36,10 +36,10 @@ class _SummaryState extends State<Summary> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Container(
-          padding: EdgeInsets.only(top: 50, bottom: 20, left: 20, right: 20),
+          padding:
+              const EdgeInsets.only(top: 50, bottom: 20, left: 20, right: 20),
           child: Row(children: [
             const Expanded(
               child: Text(
@@ -52,24 +52,24 @@ class _SummaryState extends State<Summary> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(right: 10),
+              margin: const EdgeInsets.only(right: 10),
               alignment: Alignment.centerRight,
               child: Row(children: [
                 Padding(
-                    padding: EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
                     child: Icon(
                       Icons.view_quilt_outlined,
                       color: Colors.blue[400],
                       size: 20,
                     )),
-                Padding(
+                const Padding(
                     padding: EdgeInsets.all(5),
                     child: Icon(
                       Icons.list_rounded,
                       color: Colors.black87,
                       size: 20,
                     )),
-                Padding(
+                const Padding(
                     padding: EdgeInsets.all(5),
                     child: Icon(
                       Icons.lens_blur_sharp,
@@ -98,7 +98,7 @@ class _SummaryState extends State<Summary> {
                           ),
                         ),
                         Padding(
-                            padding: EdgeInsets.only(top: 5),
+                            padding: const EdgeInsets.only(top: 5),
                             child: Text(
                               e.description,
                               textWidthBasis: TextWidthBasis.parent,
@@ -112,6 +112,6 @@ class _SummaryState extends State<Summary> {
                 ))
             .toList(),
       ),
-    ]));
+    ]);
   }
 }

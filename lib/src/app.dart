@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           backgroundColor: Colors.grey[50],
-          appBar: CustomAppBar(),
-          body: ItemListView(),
+          appBar: const CustomAppBar(),
+          body: const ItemListView(),
         ));
   }
 }

@@ -1,6 +1,5 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
 
 class Subscribe extends StatefulWidget {
   const Subscribe({Key? key}) : super(key: key);
@@ -29,15 +28,15 @@ class _SubscribeState extends State<Subscribe> {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.only(left: 10, right: 10),
-          child: Container(
+          padding: const EdgeInsets.only(left: 10, right: 10),
+          child: SizedBox(
               height: 50,
               child: Column(children: [
                 Container(
                   padding: const EdgeInsets.only(
                       top: 20, right: 10, left: 10, bottom: 10),
                   alignment: Alignment.centerLeft,
-                  child: Text(
+                  child: const Text(
                     'More personal recommendations \nand risk reports?',
                     style: TextStyle(
                         color: Colors.white,
@@ -49,7 +48,7 @@ class _SubscribeState extends State<Subscribe> {
                 Container(
                   padding: const EdgeInsets.only(right: 10, left: 10),
                   alignment: Alignment.centerLeft,
-                  child: Text(
+                  child: const Text(
                     'Subscribe & get 1 month free',
                     style: TextStyle(
                         color: Colors.white,
@@ -62,10 +61,19 @@ class _SubscribeState extends State<Subscribe> {
                 Container(
                     alignment: Alignment.centerRight,
                     child: ElevatedButton(
+                      style: ButtonStyle(
+                          shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                  side: const BorderSide(color: Colors.white))),
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.white)),
+                      onPressed: () => {},
                       child: Container(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                             left: 20, right: 20, top: 0, bottom: 0),
-                        child: Text(
+                        child: const Text(
                           "Subscribe",
                           style: TextStyle(
                               color: Colors.blue,
@@ -74,15 +82,6 @@ class _SubscribeState extends State<Subscribe> {
                               fontSize: 12),
                         ),
                       ),
-                      style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(18.0),
-                                      side: BorderSide(color: Colors.white))),
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.white)),
-                      onPressed: () => {},
                     )),
               ])),
         ),

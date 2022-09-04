@@ -39,7 +39,8 @@ class _ItemListViewState extends State<ItemListView>
         SliverToBoxAdapter(
           child: Container(
             height: 30,
-            margin: EdgeInsets.only(top: 15, bottom: 40, left: 15, right: 15),
+            margin:
+                const EdgeInsets.only(top: 15, bottom: 40, left: 15, right: 15),
             alignment: Alignment.bottomCenter,
             child: TabBar(
                 indicatorSize: TabBarIndicatorSize.label,
@@ -48,19 +49,20 @@ class _ItemListViewState extends State<ItemListView>
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.1),
                         blurRadius: 25,
-                        offset: Offset(0, 20), // changes position of shadow
+                        offset:
+                            const Offset(0, 20), // changes position of shadow
                       ),
                     ],
                     borderRadius: BorderRadius.circular(10), // Creates border
                     color: Colors.white),
-                labelPadding: EdgeInsets.only(left: 5, right: 5),
+                labelPadding: const EdgeInsets.only(left: 5, right: 5),
                 labelColor: Colors.blue[700],
                 unselectedLabelColor: Colors.blueGrey[800],
                 controller: _tabController,
                 tabs: [
                   Tab(
                     child: Container(
-                      margin: EdgeInsets.only(left: 10, right: 10),
+                      margin: const EdgeInsets.only(left: 10, right: 10),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -71,8 +73,8 @@ class _ItemListViewState extends State<ItemListView>
                                 : Colors.blueGrey[800],
                             size: 20,
                           ),
-                          SizedBox(width: 4),
-                          Text(
+                          const SizedBox(width: 4),
+                          const Text(
                             'Home',
                             style: TextStyle(
                               fontSize: 12,
@@ -85,7 +87,7 @@ class _ItemListViewState extends State<ItemListView>
                   ),
                   Tab(
                     child: Container(
-                      margin: EdgeInsets.only(left: 10, right: 10),
+                      margin: const EdgeInsets.only(left: 10, right: 10),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -96,8 +98,8 @@ class _ItemListViewState extends State<ItemListView>
                                 : Colors.blueGrey[800],
                             size: 20,
                           ),
-                          SizedBox(width: 4),
-                          Text(
+                          const SizedBox(width: 4),
+                          const Text(
                             'Suggested',
                             style: TextStyle(
                               fontSize: 12,
@@ -110,7 +112,7 @@ class _ItemListViewState extends State<ItemListView>
                   ),
                   Tab(
                     child: Container(
-                      margin: EdgeInsets.only(left: 10, right: 10),
+                      margin: const EdgeInsets.only(left: 10, right: 10),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -121,8 +123,8 @@ class _ItemListViewState extends State<ItemListView>
                                 : Colors.blueGrey[800],
                             size: 20,
                           ),
-                          SizedBox(width: 4),
-                          Text(
+                          const SizedBox(width: 4),
+                          const Text(
                             'Risks',
                             style: TextStyle(
                               fontSize: 12,
@@ -137,12 +139,12 @@ class _ItemListViewState extends State<ItemListView>
           ),
         ),
         SliverToBoxAdapter(
-            child: Container(
+            child: SizedBox(
           height: MediaQuery.of(context).size.height * 0.9,
           child: TabBarView(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             controller: _tabController,
-            children: [
+            children: const [
               Home(),
               Suggestion(),
               Risk(),

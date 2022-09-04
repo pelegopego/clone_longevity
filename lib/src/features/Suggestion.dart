@@ -45,8 +45,8 @@ class _SuggestionState extends State<Suggestion> {
       Row(
         children: [
           Container(
-            padding: EdgeInsets.only(bottom: 30, left: 20, right: 20),
-            child: Text(
+            padding: const EdgeInsets.only(bottom: 30, left: 20, right: 20),
+            child: const Text(
               'Suggestions',
               style: TextStyle(
                   color: Colors.black87,
@@ -57,12 +57,12 @@ class _SuggestionState extends State<Suggestion> {
           ),
         ],
       ),
-      Container(
+      SizedBox(
           height: 280,
           child: ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: summaryList.length,
-              padding: EdgeInsets.only(left: 15, right: 15),
+              padding: const EdgeInsets.only(left: 15, right: 15),
               itemBuilder: (BuildContext context, int index) {
                 return Column(children: [
                   Container(
@@ -74,13 +74,13 @@ class _SuggestionState extends State<Suggestion> {
                             color: summaryList[index].color,
                             size: 24,
                           ),
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           Expanded(
                               child: Text(
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis, // new
                             summaryList[index].title,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 13,
                               color: Colors.black87,
                               fontFamily: 'Comfortaa',
@@ -103,14 +103,13 @@ class _SuggestionState extends State<Suggestion> {
                               )
                             : Container(),
                       ])),
-                  Container(
-                      child: Divider(
+                  const Divider(
                     thickness: 0.3,
                     color: Colors.blue,
-                  )),
+                  ),
                 ]);
               })),
-      Subscribe(),
+      const Subscribe(),
     ]);
   }
 }

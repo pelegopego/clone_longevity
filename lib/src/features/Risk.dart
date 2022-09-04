@@ -47,6 +47,7 @@ class _RiskState extends State<Risk> {
     ];
   }
 
+  // ignore: non_constant_identifier_names
   List<ItemItem> ItemList = _createSampleData();
 
   @override
@@ -55,8 +56,8 @@ class _RiskState extends State<Risk> {
       Row(
         children: [
           Container(
-            padding: EdgeInsets.only(bottom: 30, left: 20, right: 20),
-            child: Text(
+            padding: const EdgeInsets.only(bottom: 30, left: 20, right: 20),
+            child: const Text(
               'Biomarker Analysis & Risks',
               style: TextStyle(
                   color: Colors.black87,
@@ -67,12 +68,12 @@ class _RiskState extends State<Risk> {
           ),
         ],
       ),
-      Container(
+      SizedBox(
           height: 400,
           child: ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: ItemList.length,
-              padding: EdgeInsets.only(left: 15, right: 15),
+              padding: const EdgeInsets.only(left: 15, right: 15),
               itemBuilder: (BuildContext context, int index) {
                 return Column(children: [
                   Container(
@@ -85,7 +86,7 @@ class _RiskState extends State<Risk> {
                             overflow: TextOverflow.ellipsis, // new
                             ItemList[index].title,
                             maxLines: 2,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 13,
                               color: Colors.black87,
                               fontFamily: 'Comfortaa',
@@ -122,14 +123,13 @@ class _RiskState extends State<Risk> {
                               )
                             : Container(),
                       ])),
-                  Container(
-                      child: Divider(
+                  const Divider(
                     thickness: 0.3,
                     color: Colors.blue,
-                  )),
+                  ),
                 ]);
               })),
-      Subscribe(),
+      const Subscribe(),
     ]);
   }
 }

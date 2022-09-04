@@ -24,7 +24,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
               BoxShadow(
                 color: Colors.grey.withOpacity(0.1),
                 blurRadius: 5,
-                offset: Offset(0, 2), // changes position of shadow
+                offset: const Offset(0, 2), // changes position of shadow
               ),
             ],
             borderRadius: BorderRadius.circular(10), // Creates border
@@ -63,7 +63,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                       alignment: Alignment.centerRight,
                       child: Row(children: [
                         Padding(
-                            padding: EdgeInsets.all(5),
+                            padding: const EdgeInsets.all(5),
                             child: Icon(
                               Icons.supervised_user_circle,
                               color: Colors.blue[400],

@@ -16,8 +16,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List cardList = [
-    DailySteps(),
-    Balance(),
+    const DailySteps(),
+    const Balance(),
   ];
   List<T> map<T>(List list, Function handler) {
     List<T> result = [];
@@ -44,7 +44,7 @@ class _HomeState extends State<Home> {
           });
         }).toList(),
       ),
-      Summary(),
+      const Summary(),
     ]);
   }
 }
