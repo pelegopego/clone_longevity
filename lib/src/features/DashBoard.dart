@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'Home.dart';
+import 'Suggestion.dart';
 
 class ItemListView extends StatefulWidget {
   const ItemListView({Key? key}) : super(key: key);
@@ -136,12 +137,13 @@ class _ItemListViewState extends State<ItemListView>
         ),
         SliverToBoxAdapter(
             child: Container(
-          height: MediaQuery.of(context).size.height * 0.7,
+          height: MediaQuery.of(context).size.height * 0.9,
           child: TabBarView(
+            physics: NeverScrollableScrollPhysics(),
             controller: _tabController,
             children: [
               Home(),
-              Home(),
+              Suggestion(),
               Home(),
             ],
           ),

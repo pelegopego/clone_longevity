@@ -1,34 +1,39 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'cards/Subscribe.dart';
 
 class SummaryItem {
   final String title;
   final String description;
   final Color? color;
+  final IconData? icon;
 
-  SummaryItem(this.title, this.description, this.color);
+  SummaryItem(this.title, this.description, this.color, this.icon);
 }
 
-class Summary extends StatefulWidget {
-  const Summary({Key? key}) : super(key: key);
+class Suggestion extends StatefulWidget {
+  const Suggestion({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _SummaryState createState() => _SummaryState();
+  _SuggestionState createState() => _SuggestionState();
 }
 
-class _SummaryState extends State<Summary> {
+class _SuggestionState extends State<Suggestion> {
   static List<SummaryItem> _createSampleData() {
     return [
-      SummaryItem('Risk level', 'Middle', Colors.yellow[700]),
-      SummaryItem('BMI', '18.8', Colors.red[400]),
-      SummaryItem('Ideal Weight', '83.2', Colors.greenAccent[400]),
-      SummaryItem('Obesity Rate', 'Normal', Colors.yellow[700]),
-      SummaryItem('BMR', '2290', Colors.yellow[700]),
-      SummaryItem('Bio-Age', '25', Colors.black87),
-      SummaryItem('Body type', 'Mesomorph', Colors.black87),
-      SummaryItem('Subcutaneous Fat', '15%', Colors.yellow[700]),
+      SummaryItem('Walk more than 8k steps per day', '', Colors.red[400],
+          Icons.keyboard_double_arrow_up_rounded),
+      SummaryItem(
+          'Lower your cholesterol',
+          'Cholesterol level should be less than 5 \nCurrent: 5,7 mmol/L',
+          Colors.red[400],
+          Icons.keyboard_arrow_up_rounded),
+      SummaryItem('Limit Alcohol consumption to 1-2 glasses a day', '',
+          Colors.yellow[700], Icons.rectangle),
+      SummaryItem('Limit Alcohol consumption to 1-2 glasses a day', '',
+          Colors.greenAccent[400], Icons.circle),
     ];
   }
 
@@ -36,84 +41,76 @@ class _SummaryState extends State<Summary> {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-        child: Container(
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Container(
-          padding: EdgeInsets.only(top: 50, bottom: 20, left: 20, right: 20),
-          child: Row(children: [
-            const Expanded(
-              child: Text(
-                'My summary',
-                style: TextStyle(
-                    color: Colors.black87,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Comfortaa',
-                    fontSize: 22),
-              ),
+    return Column(children: [
+      Row(
+        children: [
+          Container(
+            padding: EdgeInsets.only(bottom: 30, left: 20, right: 20),
+            child: Text(
+              'Suggestions',
+              style: TextStyle(
+                  color: Colors.black87,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Comfortaa',
+                  fontSize: 22),
             ),
-            Container(
-              margin: EdgeInsets.only(right: 10),
-              alignment: Alignment.centerRight,
-              child: Row(children: [
-                Padding(
-                    padding: EdgeInsets.all(5),
-                    child: Icon(
-                      Icons.view_quilt_outlined,
-                      color: Colors.blue[400],
-                      size: 20,
-                    )),
-                Padding(
-                    padding: EdgeInsets.all(5),
-                    child: Icon(
-                      Icons.list_rounded,
-                      color: Colors.black87,
-                      size: 20,
-                    )),
-                Padding(
-                    padding: EdgeInsets.all(5),
-                    child: Icon(
-                      Icons.lens_blur_sharp,
-                      color: Colors.black87,
-                      size: 20,
-                    )),
-              ]),
-            ),
-          ])),
-      Wrap(
-        children: summaryList
-            .map((e) => Container(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          e.title,
-                          textWidthBasis: TextWidthBasis.parent,
-                          textAlign: TextAlign.justify,
-                          style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Comfortaa',
-                            color: Colors.black87,
-                          ),
-                        ),
-                        Padding(
-                            padding: EdgeInsets.only(top: 5),
-                            child: Text(
-                              e.description,
-                              textWidthBasis: TextWidthBasis.parent,
-                              textAlign: TextAlign.justify,
-                              style: TextStyle(
-                                  fontSize: 22,
-                                  fontFamily: 'Comfortaa',
-                                  color: e.color),
-                            ))
-                      ]),
-                ))
-            .toList(),
+          ),
+        ],
       ),
-    ])));
+      Container(
+          height: 280,
+          child: ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: summaryList.length,
+              padding: EdgeInsets.only(left: 15, right: 15),
+              itemBuilder: (BuildContext context, int index) {
+                return Column(children: [
+                  Container(
+                      alignment: Alignment.centerLeft,
+                      child: Row(
+                        children: [
+                          Icon(
+                            summaryList[index].icon,
+                            color: summaryList[index].color,
+                            size: 24,
+                          ),
+                          SizedBox(width: 10),
+                          Expanded(
+                              child: Text(
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis, // new
+                            summaryList[index].title,
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Colors.black87,
+                              fontFamily: 'Comfortaa',
+                            ),
+                          )),
+                        ],
+                      )),
+                  Container(
+                      alignment: Alignment.centerLeft,
+                      child: Row(children: [
+                        summaryList[index].description != ''
+                            ? Text(
+                                summaryList[index].description,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  height: 2.5,
+                                  color: Colors.grey[700],
+                                  fontFamily: 'Comfortaa',
+                                ),
+                              )
+                            : Container(),
+                      ])),
+                  Container(
+                      child: Divider(
+                    thickness: 0.3,
+                    color: Colors.blue,
+                  )),
+                ]);
+              })),
+      Subscribe(),
+    ]);
   }
 }
