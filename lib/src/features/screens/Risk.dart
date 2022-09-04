@@ -1,16 +1,8 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'cards/Subscribe.dart';
-
-class ItemItem {
-  final String title;
-  final String description;
-  final String suggestion;
-  final Color? color;
-
-  ItemItem(this.title, this.description, this.suggestion, this.color);
-}
+import '../cards/Subscribe.dart';
+import '../data/RiskItem.dart';
 
 class Risk extends StatefulWidget {
   const Risk({Key? key}) : super(key: key);
@@ -21,34 +13,34 @@ class Risk extends StatefulWidget {
 }
 
 class _RiskState extends State<Risk> {
-  static List<ItemItem> _createSampleData() {
+  static List<RiskItem> _createSampleData() {
     return [
-      ItemItem('Risk level is normal', '50%', '', Colors.blue[400]),
-      ItemItem('BMI (Bio Mass Index)', '18.8', '', Colors.red[400]),
-      ItemItem('Wheight Excess', 'Overweight', '', Colors.red[400]),
-      ItemItem('Ideal Weight', '60.2', '-20.1kg remaining to match!',
+      RiskItem('Risk level is normal', '50%', '', Colors.blue[400]),
+      RiskItem('BMI (Bio Mass Index)', '18.8', '', Colors.red[400]),
+      RiskItem('Wheight Excess', 'Overweight', '', Colors.red[400]),
+      RiskItem('Ideal Weight', '60.2', '-20.1kg remaining to match!',
           Colors.greenAccent[400]),
-      ItemItem(
+      RiskItem(
           'Probability of being affected by severe diseases in next 10 years',
           '60%',
           '',
           Colors.yellow[400]),
-      ItemItem(
+      RiskItem(
           'Chances of being affected by immunity related diseases in next 2 years',
           '20%',
           '',
           Colors.greenAccent[400]),
-      ItemItem(
+      RiskItem(
           'Your cancer risks are the same like other people with normal weight',
           '',
           '',
           Colors.greenAccent[400]),
-      ItemItem('Your lung capacity is normal', '', '', Colors.greenAccent[400]),
+      RiskItem('Your lung capacity is normal', '', '', Colors.greenAccent[400]),
     ];
   }
 
   // ignore: non_constant_identifier_names
-  List<ItemItem> ItemList = _createSampleData();
+  List<RiskItem> RiskItemList = _createSampleData();
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +64,7 @@ class _RiskState extends State<Risk> {
           height: 400,
           child: ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: ItemList.length,
+              itemCount: RiskItemList.length,
               padding: const EdgeInsets.only(left: 15, right: 15),
               itemBuilder: (BuildContext context, int index) {
                 return Column(children: [
@@ -84,7 +76,7 @@ class _RiskState extends State<Risk> {
                               child: Text(
                             softWrap: false,
                             overflow: TextOverflow.ellipsis, // new
-                            ItemList[index].title,
+                            RiskItemList[index].title,
                             maxLines: 2,
                             style: const TextStyle(
                               fontSize: 13,
@@ -95,12 +87,12 @@ class _RiskState extends State<Risk> {
                           Container(
                               alignment: Alignment.centerLeft,
                               child: Row(children: [
-                                ItemList[index].description != ''
+                                RiskItemList[index].description != ''
                                     ? Text(
-                                        ItemList[index].description,
+                                        RiskItemList[index].description,
                                         style: TextStyle(
                                           fontSize: 20,
-                                          color: ItemList[index].color,
+                                          color: RiskItemList[index].color,
                                           fontFamily: 'Comfortaa',
                                         ),
                                       )
@@ -111,9 +103,9 @@ class _RiskState extends State<Risk> {
                   Container(
                       alignment: Alignment.centerLeft,
                       child: Row(children: [
-                        ItemList[index].suggestion != ''
+                        RiskItemList[index].suggestion != ''
                             ? Text(
-                                ItemList[index].suggestion,
+                                RiskItemList[index].suggestion,
                                 style: TextStyle(
                                   fontSize: 10,
                                   height: 2.5,

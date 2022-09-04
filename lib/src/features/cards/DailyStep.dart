@@ -1,13 +1,7 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
-
-class Steps {
-  final int percentual;
-  final charts.Color color;
-
-  Steps(this.percentual, this.color);
-}
+import '../data/Steps.dart';
 
 class DailySteps extends StatefulWidget {
   const DailySteps({Key? key}) : super(key: key);

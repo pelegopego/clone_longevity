@@ -1,7 +1,6 @@
-import 'package:app_clone_longevity/src/features/DashBoard.dart';
 import 'package:flutter/material.dart';
-import 'features/DashBoard.dart';
-import 'features/appBar.dart';
+import '../screens/DashBoard.dart';
+import '../components/appBar.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {

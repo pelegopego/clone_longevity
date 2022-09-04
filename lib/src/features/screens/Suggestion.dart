@@ -1,16 +1,8 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'cards/Subscribe.dart';
-
-class SummaryItem {
-  final String title;
-  final String description;
-  final Color? color;
-  final IconData? icon;
-
-  SummaryItem(this.title, this.description, this.color, this.icon);
-}
+import '../cards/Subscribe.dart';
+import '../data/SuggestionItem.dart';
 
 class Suggestion extends StatefulWidget {
   const Suggestion({Key? key}) : super(key: key);
@@ -21,23 +13,23 @@ class Suggestion extends StatefulWidget {
 }
 
 class _SuggestionState extends State<Suggestion> {
-  static List<SummaryItem> _createSampleData() {
+  static List<SuggestionItem> _createSampleData() {
     return [
-      SummaryItem('Walk more than 8k steps per day', '', Colors.red[400],
+      SuggestionItem('Walk more than 8k steps per day', '', Colors.red[400],
           Icons.keyboard_double_arrow_up_rounded),
-      SummaryItem(
+      SuggestionItem(
           'Lower your cholesterol',
           'Cholesterol level should be less than 5 \nCurrent: 5,7 mmol/L',
           Colors.red[400],
           Icons.keyboard_arrow_up_rounded),
-      SummaryItem('Limit Alcohol consumption to 1-2 glasses a day', '',
+      SuggestionItem('Limit Alcohol consumption to 1-2 glasses a day', '',
           Colors.yellow[700], Icons.rectangle),
-      SummaryItem('Limit Alcohol consumption to 1-2 glasses a day', '',
+      SuggestionItem('Limit Alcohol consumption to 1-2 glasses a day', '',
           Colors.greenAccent[400], Icons.circle),
     ];
   }
 
-  List<SummaryItem> summaryList = _createSampleData();
+  List<SuggestionItem> summaryList = _createSampleData();
 
   @override
   Widget build(BuildContext context) {
