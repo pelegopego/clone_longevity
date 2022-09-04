@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'Home.dart';
 import 'Suggestion.dart';
+import 'Risk.dart';
 
 class ItemListView extends StatefulWidget {
   const ItemListView({Key? key}) : super(key: key);
@@ -144,7 +145,7 @@ class _ItemListViewState extends State<ItemListView>
             children: [
               Home(),
               Suggestion(),
-              Home(),
+              Risk(),
             ],
           ),
         )),
