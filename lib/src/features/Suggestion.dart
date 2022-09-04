@@ -36,8 +36,10 @@ class _SummaryState extends State<Summary> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+    return SliverToBoxAdapter(
+        child: Container(
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Container(
           padding: EdgeInsets.only(top: 50, bottom: 20, left: 20, right: 20),
           child: Row(children: [
@@ -112,6 +114,6 @@ class _SummaryState extends State<Summary> {
                 ))
             .toList(),
       ),
-    ]));
+    ])));
   }
 }

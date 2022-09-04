@@ -1,9 +1,6 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'cards/DailyStep.dart';
-import 'cards/Balance.dart';
-import 'Summary.dart';
+import 'Home.dart';
 
 class ItemListView extends StatefulWidget {
   const ItemListView({Key? key}) : super(key: key);
@@ -35,18 +32,6 @@ class _ItemListViewState extends State<ItemListView>
 
   @override
   Widget build(BuildContext context) {
-    List cardList = [
-      DailySteps(),
-      Balance(),
-    ];
-    List<T> map<T>(List list, Function handler) {
-      List<T> result = [];
-      for (var i = 0; i < list.length; i++) {
-        result.add(handler(i, list[i]));
-      }
-      return result;
-    }
-
     return CustomScrollView(
       slivers: <Widget>[
         SliverToBoxAdapter(
@@ -150,40 +135,17 @@ class _ItemListViewState extends State<ItemListView>
           ),
         ),
         SliverToBoxAdapter(
-          child: CarouselSlider(
-            options: CarouselOptions(
-              height: 105.0,
-              enableInfiniteScroll: false,
-            ),
-            items: cardList.map((card) {
-              return Builder(builder: (BuildContext context) {
-                return SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.30,
-                  child: card,
-                );
-              });
-            }).toList(),
+            child: Container(
+          height: MediaQuery.of(context).size.height * 0.7,
+          child: TabBarView(
+            controller: _tabController,
+            children: [
+              Home(),
+              Home(),
+              Home(),
+            ],
           ),
-        ),
-        Summary(),
-        SliverToBoxAdapter(
-          child: Divider(
-            thickness: 2.5,
-            color: Colors.blue[100],
-          ),
-        ),
-        SliverFixedExtentList(
-          itemExtent: 50.0,
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              return Container(
-                alignment: Alignment.center,
-                color: Colors.lightBlue[100 * (index % 9)],
-                child: Text('List Item $index'),
-              );
-            },
-          ),
-        ),
+        )),
       ],
     );
   }
