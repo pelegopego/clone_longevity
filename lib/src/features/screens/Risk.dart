@@ -61,7 +61,7 @@ class _RiskState extends State<Risk> {
         ],
       ),
       SizedBox(
-          height: 400,
+          height: 350,
           child: ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               itemCount: RiskItemList.length,

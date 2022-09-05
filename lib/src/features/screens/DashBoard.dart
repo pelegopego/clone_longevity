@@ -102,7 +102,7 @@ class _ItemListViewState extends State<ItemListView>
                           const Text(
                             'Suggested',
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 11,
                               fontFamily: 'Comfortaa',
                             ),
                           )
@@ -140,7 +140,7 @@ class _ItemListViewState extends State<ItemListView>
         ),
         SliverToBoxAdapter(
             child: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.9,
+          height: MediaQuery.of(context).size.height,
           child: TabBarView(
             physics: const NeverScrollableScrollPhysics(),
             controller: _tabController,
