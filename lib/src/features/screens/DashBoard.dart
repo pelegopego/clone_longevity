@@ -102,7 +102,7 @@ class _ItemListViewState extends State<ItemListView>
                           const Text(
                             'Suggested',
                             style: TextStyle(
-                              fontSize: 11,
+                              fontSize: 10,
                               fontFamily: 'Comfortaa',
                             ),
                           )
