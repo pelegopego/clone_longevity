@@ -2,14 +2,34 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import '../data/Steps.dart';
+import 'package:pedometer/pedometer.dart';
+// ignore: depend_on_referenced_packages
+import 'package:intl/intl.dart';
 
 class DailySteps extends StatefulWidget {
   const DailySteps({Key? key}) : super(key: key);
 
-  static List<charts.Series<Steps, int>> _createSampleData() {
+  @override
+  State<DailySteps> createState() => _DailyStepsState();
+}
+
+class _DailyStepsState extends State<DailySteps> {
+  int steps = 0;
+  int stepsTotal = 10000;
+  String message = 'Daily step goal';
+
+  String getFormatedSteps(int steps) {
+    if (steps < 1000) {
+      return steps.toString();
+    } else {
+      return ('${NumberFormat("###.#", "en_US").format(steps / 1000)}k');
+    }
+  }
+
+  List<charts.Series<Steps, int>> _createSampleData() {
     final data = [
-      Steps(75, charts.MaterialPalette.blue.shadeDefault), //Actual Steps
-      Steps(25, charts.MaterialPalette.white), //Missing Steps
+      Steps(steps, charts.MaterialPalette.blue.shadeDefault), //Actual Steps
+      Steps(stepsTotal - steps, charts.MaterialPalette.white), //Missing Steps
     ];
 
     return [
@@ -23,11 +43,34 @@ class DailySteps extends StatefulWidget {
     ];
   }
 
-  @override
-  State<DailySteps> createState() => _DailyStepsState();
-}
+  late Stream<StepCount> _stepCountStream;
 
-class _DailyStepsState extends State<DailySteps> {
+  void onStepCount(StepCount event) {
+    setState(() {
+      steps = event.steps;
+    });
+  }
+
+  void onStepCountError(error) {
+    setState(() {
+      message = error.toString();
+    });
+  }
+
+  Future<void> initPlatformState() async {
+    _stepCountStream = await Pedometer.stepCountStream;
+
+    /// Listen to streams and handle errors
+    _stepCountStream.listen(onStepCount).onError(onStepCountError);
+    ;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initPlatformState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -43,9 +86,9 @@ class _DailyStepsState extends State<DailySteps> {
               child: SizedBox(
                   height: 25,
                   child: Row(children: [
-                    const Expanded(
+                    Expanded(
                       child: Text(
-                        'Daily step goal',
+                        message,
                         style: TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
@@ -83,7 +126,7 @@ class _DailyStepsState extends State<DailySteps> {
                 SizedBox(
                   height: 70,
                   width: 70,
-                  child: charts.PieChart<int>(DailySteps._createSampleData(),
+                  child: charts.PieChart<int>(_createSampleData(),
                       animate: false,
                       layoutConfig: charts.LayoutConfig(
                         leftMarginSpec: charts.MarginSpec.fixedPixel(12),
@@ -115,8 +158,8 @@ class _DailyStepsState extends State<DailySteps> {
                       child: Row(children: [
                         Container(
                           alignment: Alignment.bottomLeft,
-                          child: const Text(
-                            '7.5k',
+                          child: Text(
+                            getFormatedSteps(steps),
                             style: TextStyle(
                                 color: Colors.black87,
                                 fontWeight: FontWeight.bold,
@@ -126,8 +169,8 @@ class _DailyStepsState extends State<DailySteps> {
                         ),
                         Container(
                           alignment: Alignment.bottomLeft,
-                          child: const Text(
-                            '/10k',
+                          child: Text(
+                            '/' + getFormatedSteps(stepsTotal),
                             style: TextStyle(
                                 color: Colors.black87,
                                 fontFamily: 'Comfortaa',
