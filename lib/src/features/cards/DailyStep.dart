@@ -1,4 +1,5 @@
 // ignore_for_file: file_names
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import '../data/Steps.dart';
@@ -16,7 +17,6 @@ class DailySteps extends StatefulWidget {
 class _DailyStepsState extends State<DailySteps> {
   int steps = 0;
   int stepsTotal = 10000;
-  String message = 'Daily step goal';
 
   String getFormatedSteps(int steps) {
     if (steps < 1000) {
@@ -52,17 +52,16 @@ class _DailyStepsState extends State<DailySteps> {
   }
 
   void onStepCountError(error) {
-    setState(() {
-      message = error.toString();
-    });
+    if (kDebugMode) {
+      print(error);
+    }
   }
 
   Future<void> initPlatformState() async {
-    _stepCountStream = await Pedometer.stepCountStream;
+    _stepCountStream = Pedometer.stepCountStream;
 
     /// Listen to streams and handle errors
     _stepCountStream.listen(onStepCount).onError(onStepCountError);
-    ;
   }
 
   @override
@@ -86,9 +85,9 @@ class _DailyStepsState extends State<DailySteps> {
               child: SizedBox(
                   height: 25,
                   child: Row(children: [
-                    Expanded(
+                    const Expanded(
                       child: Text(
-                        message,
+                        'Daily step goal',
                         style: TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
@@ -160,7 +159,7 @@ class _DailyStepsState extends State<DailySteps> {
                           alignment: Alignment.bottomLeft,
                           child: Text(
                             getFormatedSteps(steps),
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors.black87,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Comfortaa',
@@ -170,8 +169,8 @@ class _DailyStepsState extends State<DailySteps> {
                         Container(
                           alignment: Alignment.bottomLeft,
                           child: Text(
-                            '/' + getFormatedSteps(stepsTotal),
-                            style: TextStyle(
+                            '/${getFormatedSteps(stepsTotal)}',
+                            style: const TextStyle(
                                 color: Colors.black87,
                                 fontFamily: 'Comfortaa',
                                 fontSize: 20),
